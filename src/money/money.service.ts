@@ -16,7 +16,7 @@ export interface MoneyData {
 }
 
 @Injectable()
-export class VariationService {
+export class MoneyService {
 
   num: number;
   values: MoneyData[];
