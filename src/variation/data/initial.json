@@ -1,0 +1,147 @@
+[
+    {
+      "id": 1,
+      "name": "ABC",
+      "current_value": 2.5956,
+      "previous_value": 2.5956,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 2,
+      "name": "DEF",
+      "current_value": 1.6443,
+      "previous_value": 1.6443,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 3,
+      "name": "GHI",
+      "current_value": 2.0100,
+      "previous_value": 2.0100,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 4,
+      "name": "JKL",
+      "current_value": 1.5276,
+      "previous_value": 1.5276,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 5,
+      "name": "MNO",
+      "current_value": 2.3069,
+      "previous_value": 2.3069,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 6,
+      "name": "PQR",
+      "current_value": 2.3685,
+      "previous_value": 2.3685,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 7,
+      "name": "STU",
+      "current_value": 2.1524,
+      "previous_value": 2.1524,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 8,
+      "name": "VWX",
+      "current_value": 2.7207,
+      "previous_value": 2.7207,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 9,
+      "name": "YZA",
+      "current_value": 2.1403,
+      "previous_value": 2.1403,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 10,
+      "name": "BCD",
+      "current_value": 2.8524,
+      "previous_value": 2.8524,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 11,
+      "name": "EFG",
+      "current_value": 2.4116,
+      "previous_value": 2.4116,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 12,
+      "name": "HIJ",
+      "current_value": 2.7489,
+      "previous_value": 2.7489,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 13,
+      "name": "KLM",
+      "current_value": 2.4194,
+      "previous_value": 2.4194,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 14,
+      "name": "NOP",
+      "current_value": 1.8473,
+      "previous_value": 1.8473,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 15,
+      "name": "QRS",
+      "current_value": 2.0679,
+      "previous_value": 2.0679,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    },
+    {
+      "id": 16,
+      "name": "TUV",
+      "current_value": 1.7696,
+      "previous_value": 1.7696,
+      "variation": 0,
+      "status": "valued",
+      "last_update": "2023-07-12T12:34:56.789Z"
+    }
+  ]
+  
