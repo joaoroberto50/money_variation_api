@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 export interface MoneyData {
@@ -15,15 +15,6 @@ export interface MoneyData {
 export class MoneyService {
 
   values: MoneyData[];
-  valueErro: MoneyData = {
-    id: 0,
-    name: "ERROR",
-    current_value: 0,
-    previous_value: 0,
-    variation: 0,
-    status: "invalid",
-    last_update: new Date('2023-01-01')
-  }
   
   constructor(private prisma: PrismaService) {
     this.attValues();
@@ -84,9 +75,9 @@ export class MoneyService {
 
   findOne(name: string) {
     const specific: MoneyData = this.values.find((item) => item.name.toLowerCase() === name.toLowerCase());
-    if(specific != undefined)
-      return specific;
-    return this.valueErro;
+    if(specific == undefined)
+      throw new NotFoundException(`${name} is not a valid currency in our quote.`) 
+    return specific;
   }
 
   private async update(values: MoneyData) {
