@@ -1,9 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateVariationDto } from './dto/create-variation.dto';
-import { UpdateVariationDto } from './dto/update-variation.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Prisma } from '@prisma/client';
-import * as fs from 'fs';
 
 export interface MoneyData {
   id: number;
@@ -18,7 +14,6 @@ export interface MoneyData {
 @Injectable()
 export class MoneyService {
 
-  num: number;
   values: MoneyData[];
   valueErro: MoneyData = {
     id: 0,
@@ -40,7 +35,7 @@ export class MoneyService {
   }
 
   private attValues(): void {
-    const intervalDuration = 30 * 1000;
+    const intervalDuration = 60 * 60 * 1000;
 
     setInterval(() => {
       this.values.forEach((item: MoneyData) => {
@@ -73,13 +68,7 @@ export class MoneyService {
     return (Math.floor(Math.random() * (1001 - (-1001) + 1)) + (-1001))/10000;
   }
 
-  create(moneyData: MoneyData) {
-    this.prisma.money.create({
-      data: moneyData,
-    });
-  }
-
-  async findAll(): Promise<MoneyData[]> {
+  private async findAll(): Promise<MoneyData[]> {
     const moneyList = await this.prisma.money.findMany();
 
     return moneyList.map((money) => ({
@@ -100,7 +89,7 @@ export class MoneyService {
     return this.valueErro;
   }
 
-  async update(values: MoneyData) {
+  private async update(values: MoneyData) {
       await this.prisma.money.update({
         where:{
           id: values.id,
@@ -113,9 +102,5 @@ export class MoneyService {
           last_update: values.last_update
         },
       });
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} variation`;
   }
 }
