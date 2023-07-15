@@ -13,18 +13,22 @@ export interface MoneyData {
 
 @Injectable()
 export class MoneyService {
-
+  // Os valores das moedas são armazenados nessa variavel
   values: MoneyData[];
   
+  // O construtor chama o metodo attValues e start
   constructor(private prisma: PrismaService) {
     this.attValues();
     this.start();
   }
 
+  // A função start carrega todas os registros do db na variavel values
+  // fazendo com que as requisições não precisem fazer consultas no db
   private async start() {
     this.values = await this.findAll();
   }
 
+  // attValues a cada 60 minutos atualiza as moedas
   private attValues(): void {
     const intervalDuration = 60 * 60 * 1000;
 
@@ -40,6 +44,9 @@ export class MoneyService {
     }, intervalDuration)
   }
 
+  // a função asincrona managerUpdate escreve os dados atualizados no db
+  // como existe um bug no prisma com sqlit que não permite varias atualizações ao mesmo tempo
+  // por isso a função assincrona atualiza o db e espera um segundo para fazer a proxima atualizaçã
   private async managerUpdate() {
     for(const item of this.values) {
       this.update(item);
@@ -73,6 +80,8 @@ export class MoneyService {
     }));
   }
 
+  // faz uma comparação entre a string do parametro recebida, se ela estiver em values, retorna uma 
+  // moeda especifica, senão lança NotFounsException
   findOne(name: string) {
     const specific: MoneyData = this.values.find((item) => item.name.toLowerCase() === name.toLowerCase());
     if(specific == undefined)
