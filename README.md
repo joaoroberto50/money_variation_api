@@ -1,73 +1,77 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Money Variation API v.1.0.0
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[Uma api que atualiza e gerencia a cotação de moedas imaginarias]
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Funcionalidades
 
-## Description
+- Atualização aleatória dos valores das moedas imaginárias a cada hora.
+- Endpoint para obter a lista de todas as moedas e seus valores atualizados.
+- Endpoint para obter detalhes de uma moeda específica existente.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tecnologias Utilizadas
 
-## Installation
+- [NestJS](https://nestjs.com/)
+- [Prisma](https://www.prisma.io/)
+- [SQLite](https://www.sqlite.org/)
+- [Swagger](https://swagger.io/)
+
+## Configuração e Execução
+
+Para executar a aplicação localmente, siga as etapas abaixo:
+
+1. Clone o repositório:
 
 ```bash
-$ npm install
+git clone https://github.com/joaoroberto50/money_variation_api
+cd money-variation-api
 ```
 
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+Instale as dependências do projeto:
+```
+npm install
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+Inicie o banco de dados com as migrações do Prisma:
+```
+npx prisma migrate dev
 ```
 
-## Support
+Importe os dados iniciais para o banco de dados:
+```
+sqlite3 ./prisma/dev.db < ./prisma/init.sql
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Inicie a aplicação:
+```
+npm run start
+```
+A aplicação estará disponível em http://localhost:3000.
 
-## Stay in touch
+## Documentação da API
+A API está documentada usando o Swagger. Para acessar a documentação, acesse:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Em ambiente local: http://localhost:3000/api
+- Em ambiente de produção: https://money-variation-api.onrender.com/api
 
-## License
+## Deploy
+A aplicação foi implantada no Render e está disponível em https://money-variation-api.onrender.com/.
 
-Nest is [MIT licensed](LICENSE).
+## Formato dos Dados
+Os endpoints retornam os dados no seguinte formato:
+```
+{
+  "statusCode": 200,
+  "data": {
+    "id": 1,
+    "name": "ABC",
+    "current_value": 2.4501,
+    "previous_value": 2.5222,
+    "variation": -0.0286,
+    "status": "devalued",
+    "last_update": "2023-07-14T02:01:17.143Z"
+  }
+}
+```
+## Observações
+A aplicação lê os dados do banco de dados apenas na inicialização e trabalha com todos os dados em memória. Somente durante a atualização (a cada hora) os registros são atualizados no banco de dados.
+A aplicação é projetada para trabalhar com poucos registros.
