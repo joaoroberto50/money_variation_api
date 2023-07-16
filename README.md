@@ -17,9 +17,12 @@
 
 ## Configuração e Execução
 
+Você pode executar a aplicação local o pela imagem Docker.
+
+### Local
 Para executar a aplicação localmente, siga as etapas abaixo:
 
-1. Clone o repositório:
+Clone o repositório:
 
 ```bash
 git clone https://github.com/joaoroberto50/money_variation_api
@@ -46,6 +49,22 @@ Inicie a aplicação:
 npm run start
 ```
 A aplicação estará disponível em http://localhost:3000.
+
+### Via Docker
+
+Para executar a aplicação via docker basta realizar o build da imagem
+```
+docker build -t image_name .
+```
+E rodar a imagem
+```
+docker run -p 3000:3000 image_name
+```
+### Testes
+Pasra executar testes basta executar 
+```
+npm test
+```
 
 ## Documentação da API
 A API está documentada usando o Swagger. Para acessar a documentação, acesse:
